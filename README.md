@@ -12,6 +12,6 @@ now that you have repo on your local machine
 
 run `npm install` for modules.
 
-for running the project run `npm start
+for running the project run `npm start`
 
 

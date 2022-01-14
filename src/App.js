@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import ConnectWalletButton from './components/connectWalletButton';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [address, setAddress] = useState("");
+
+  /*
+    Callback for editing the displayed address according to the incoming address result
+    Called inside [ConnectWalletButton] when address connect succeed
+  */
+  const onWalletConnect = (address) => {
+    console.log('onWalletConnect' + address);
+    setAddress(address);
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ConnectWalletButton onWalletConnected={onWalletConnect} />
+      <div className="userAccountID">
+        {
+          address !== "" ? <div>
+            <p>You are connected with address: </p>
+            <p>{address}</p>
+          </div> : "-"
+        }
+      </div>
     </div>
   );
 }
